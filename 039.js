@@ -3,34 +3,38 @@
 예를 들어 두 수 3, 12의 최대공약수는 3, 최소공배수는 12이므로 solution(3, 12)는 [3, 12]를 반환해야 합니다. */
 // https://school.programmers.co.kr/learn/courses/30/lessons/12940
 
+// 해결중!!!!!!!!!
+
+
+
 function solution(n, m) {
   var answer = [];
-  let a = 0;
-  let mul = n * m;
-  if (n > m) {
+
+  const getGCD = (x, y) => {
+    let num1 = x,
+      num2 = y;
+    let r = 1;
+  
     while (true) {
-      a = n % m;
-      n = m;
-      m = a;
-      if (n % m === 0) break;
+      r = num1 % num2;
+      if (r === 0) {
+        return num2;
+      } else {
+        num1 = num2;
+        num2 = r;
+      }
     }
-    answer.push(n);
-    answer.push(mul / n);
+  };
+
+  if (n === m) {
+    answer = [n, m];
+  } else if (n > m) {
+    let gcd = getGCD(n, m);
+    answer = [gcd, (n * m) / gcd];
   } else if (n < m) {
-    while (true) {
-      a = m % n;
-      m = n;
-      n = a;
-      if (n % m === 0) break;
-    }
-    answer.push(m);
-    answer.push(mul / m);
-  } else if (n === m) {
-    answer.push(n);
-    answer.push(m);
+    let gcd = getGCD(m, n);
+    answer = [gcd, (n * m) / gcd];
   }
 
   return answer;
 }
-
-solution(3, 12);
