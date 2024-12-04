@@ -5,20 +5,11 @@ n을 3진법 상에서 앞뒤로 뒤집은 후, 이를 다시 10진법으로 표
 // 진행 중!!
 
 function solution(n) {
-  let arr = [];
-  let answer = 0;
+  var answer = 0;
 
-  while (n % 3 === 0) {
-    arr.push(n % 3);
-    n = Math.trunc(n / 3);
-  }
-  // 이미 뒤집어져서 들어감
-  arr.map((el) => {
-    let i = arr.length - 1;
-    let el10 = el * 3 ** i--;
-    answer += el10;
-    return el10;
-  });
+  answer = n.toString(3);
+  answer = answer.split("").reverse().join("");
+  answer = parseInt(answer, 3).toString(10);
 
-  return answer;
+  return +answer;
 }

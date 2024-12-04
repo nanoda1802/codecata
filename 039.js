@@ -3,10 +3,6 @@
 예를 들어 두 수 3, 12의 최대공약수는 3, 최소공배수는 12이므로 solution(3, 12)는 [3, 12]를 반환해야 합니다. */
 // https://school.programmers.co.kr/learn/courses/30/lessons/12940
 
-// 해결중!!!!!!!!!
-
-
-
 function solution(n, m) {
   var answer = [];
 
@@ -14,7 +10,7 @@ function solution(n, m) {
     let num1 = x,
       num2 = y;
     let r = 1;
-  
+
     while (true) {
       r = num1 % num2;
       if (r === 0) {
